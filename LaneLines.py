@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 import matplotlib.image as mpimg
+import random
 
 def hist(img):
     bottom_half = img[img.shape[0]//2:,:]
