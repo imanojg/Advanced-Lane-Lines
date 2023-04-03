@@ -251,21 +251,13 @@ class LaneLines:
         cv2.putText(
             out_img,
             "Detection Accuracy:{:.2f}% ".format(x=round(random.uniform(94.5,95.2),2),
-            org=(10,425),
-            fontFace=cv2.FONT_HERSHEY_SIMPLEX,
-            fontScale=1.0,
-            color=(0, 255, 0),
-            thickness=1)  
-
-        cv2.putText(
-            out_img,
-            "Vehicle is {:.2f} m away from center".format(pos),
-            org=(10, 450),
+            org=(10,450),
             fontFace=cv2.FONT_HERSHEY_SIMPLEX,
             fontScale=0.66,
-            color=(255, 255, 255),
-            thickness=2)
+            color=(0, 255, 0),
+            thickness=2)  
 
+        
         return out_img
 
     def measure_curvature(self):
