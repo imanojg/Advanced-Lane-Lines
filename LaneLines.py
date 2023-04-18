@@ -278,10 +278,10 @@ class LaneLines:
         xl = np.dot(self.left_fit, [700**2, 700, 1])
         xr = np.dot(self.right_fit, [700**2, 700, 1])
         pos = (1280//2 - (xl+xr)//2)*xm
-        if (left_fit>right_fit):
-            accuracy=(left_fit/right_fit)*100
+        if (left_fit[2]>right_fit[2]):
+            accuracy=(left_fit[2]/right_fit[2[])*100)
         else:
-            accuracy=(right_fit/left_fit)*100
+            accuracy=(right_fit[2]/left_fit[2])*100
         return left_curveR, right_curveR, pos,accuracy[2]+30
     
    
