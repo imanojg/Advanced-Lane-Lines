@@ -192,7 +192,7 @@ class LaneLines:
 
     def plot(self, out_img):
         np.set_printoptions(precision=6, suppress=True)
-        lR, rR, pos = self.measure_curvature()
+        lR, rR, pos,accuracy = self.measure_curvature()
 
         value = None
         if abs(self.left_fit[0]) > abs(self.right_fit[0]):
