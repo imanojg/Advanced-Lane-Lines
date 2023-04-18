@@ -186,7 +186,7 @@ class LaneLines:
             y = int(y)
             cv2.line(out_img, (l, y), (r, y), (0, 255, 0))
 
-        lR, rR, pos = self.measure_curvature()
+        lR, rR, pos,accuracy = self.measure_curvature()
 
         return out_img
 
@@ -238,6 +238,8 @@ class LaneLines:
         cv2.putText(out_img, msg, org=(10, 240), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(255, 255, 255), thickness=2)
         if direction in 'LR':
             cv2.putText(out_img, curvature_msg, org=(10, 280), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(255, 255, 255), thickness=2)
+        
+        lR, rR, pos,accuracy = self.measure_curvature()
 
         cv2.putText(
             out_img,
@@ -252,7 +254,7 @@ class LaneLines:
 
         cv2.putText(
             out_img,
-            "Detection Rate :"+str(round(random.uniform(94.5,95.3),2)),
+            "Detection Rate :"+str(accuracy),
             org=(10, 450),
             fontFace=cv2.FONT_HERSHEY_SIMPLEX,
             fontScale=0.66,
@@ -276,4 +278,7 @@ class LaneLines:
         xl = np.dot(self.left_fit, [700**2, 700, 1])
         xr = np.dot(self.right_fit, [700**2, 700, 1])
         pos = (1280//2 - (xl+xr)//2)*xm
-        return left_curveR, right_curveR, pos 
+        accuracy=(left_curveR/right_curveR)*100
+        return left_curveR, right_curveR, pos,accuracy 
+    
+   
